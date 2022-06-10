@@ -1,0 +1,104 @@
+$primary: #4F518C
+$accent: #7FDEFF
+$secondary: #52506A
+$light: #f1f1f1
+ 
+html, body
+  width: 100%
+  height: 100%
+  
+html
+  display: table
+  
+body
+  display: table-cell
+  vertical-align: middle
+  background: linear-gradient(to bottom right, lighten($primary, 15%), $accent) fixed
+  
+#copyright
+  margin-top: 1.5em
+  text-align: center
+  font-family: 'Pacifico', curvie
+  color: rgba(0, 0, 0, .4)
+
+#calculator
+  width: 300px
+  height: 400px
+  margin: auto
+  display: table
+  
+  background: #FFF
+  font-family: 'Space Mono'
+  border-radius: 10px
+  border-collapse: separate
+  border-spacing: 10px
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, .15)
+  
+  #display
+    display: table-row
+    height: 20%
+    
+    #display-text
+      
+      display: table-cell
+      vertical-align: middle
+      text-align: right
+      padding-right: 10%
+  
+      background: $primary
+      color: #FFF
+      font-size: 28px
+      border-radius: 10px
+      text-shadow: 0 2px 2px
+      
+      #prev
+        font-size: 70%
+      
+  #buttons
+    display: table-row
+    
+    button
+      // So basically its 25% minus 1% margin from both sides:
+      // 25% - (1% * 2) = 23%
+      // And the same for the height:
+      // 20% - (1% * 2) = 18%
+      width: 23% 
+      height: 18%
+      margin: 1%
+      display: table-cell
+      position: relative
+      
+      font-family: inherit
+      font-size: 24px
+      background: $light
+      color: $secondary
+      outline: 0
+      border: 0
+      border-radius: 5px
+      box-shadow: 0 4px 0 darken($light, 5%)
+      transition: all .1s ease-in-out
+      cursor: pointer
+      
+      &:hover
+        background: darken($light, 10%)
+      
+      &:active
+        // Apparently, you can't transition from normal
+        // box shadow to inset box shadow, so I use this hack:
+        // https://stackoverflow.com/questions/22446148/css-box-shadow-transition
+        box-shadow: 0 0 0 #fff, inset 0 0 8px rgba(0, 0, 0, .3)
+        transform: translateY(4px)
+        
+      &.operation
+        background: $secondary
+        color: #fff
+        
+        &:hover
+          background: lighten($secondary, 10%)
+        
+      &#equals
+        width: 98% // 50% minus a margin of 1% on both sides
+        background: $primary
+        
+        &:hover
+          background: lighten($primary, 10%)
